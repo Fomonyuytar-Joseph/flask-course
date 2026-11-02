@@ -2,24 +2,10 @@ from flask import Flask , request , make_response , render_template , redirect ,
 
 app = Flask(__name__)
 
-@app.route("/" , methods = ["GET", "POST"])
+@app.route("/")
 def index():
-    if request.method == "GET":
-        return render_template("index.html")
-    elif request.method == "POST":
-         username = request.form["username"]
-         password = request.form["password"]
+    return render_template("index.html") 
 
-
-         if username == "joe" and password == "123":
-             return "success"
-         else:
-              return "Failure" 
-
-
-@app.route("file_upload", methods=["POST"] )
-def file_upload():
-    return ""
 
 
 
