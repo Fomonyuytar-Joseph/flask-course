@@ -1,25 +1,26 @@
 from flask import render_template , request
-from models import Person
+from models import User
 
 
-def register_routes(app , db):
+def register_routes(app , db , bcrypt):
 
     @app.route("/", methods=["GET", "POST"])
     def index():
-        if request.method == "GET":
-            people = Person.query.all()
-            return render_template("index.html" , people=people)
-        elif request.method == "POST":
-            name = request.form.get("name")
-            age = request.form.get("age")
-            job = request.form.get("job")
-            person = Person(name=name, age=age, job=job)
-            db.session.add(person)
-            db.session.commit()
-            return render_template("index.html" , people=Person.query.all())
+        return ""
+    #     if request.method == "GET":
+    #         people = Person.query.all()
+    #         return render_template("index.html" , people=people)
+    #     elif request.method == "POST":
+    #         name = request.form.get("name")
+    #         age = request.form.get("age")
+    #         job = request.form.get("job")
+    #         person = Person(name=name, age=age, job=job)
+    #         db.session.add(person)
+    #         db.session.commit()
+    #         return render_template("index.html" , people=Person.query.all())
 
-    @app.route("/delete/<id>", methods=['DELETE'])
-    def delete(id):
-        Person.query.filter(Person.id == id).delete()
-        db.session.commit() 
-        return render_template("index.html" , people=Person.query.all())
+    # @app.route("/delete/<id>", methods=['DELETE'])
+    # def delete(id):
+    #     Person.query.filter(Person.id == id).delete()
+    #     db.session.commit() 
+    #     return render_template("index.html" , people=Person.query.all())
